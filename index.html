@@ -8,15 +8,22 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>CLEAN THE WATERS</h1>
-    <div id="game-button-section">
-      <button class="buttons">Start</button>
-      <button class="buttons">Reload</button>
-    </div>
-    <div id="game-board-section">
-      <canvas id="game-board" width="1320" height="680"></canvas>
-    </div>
-
+    <main>
+      <div id="top-bar">
+        <span>Plastic is invading the water, BUT YOU CAN SAVE IT !</span>
+        <span>rules</span>
+        <!-- add link to my github -->
+        <span>GitHub</span>
+      </div>
+      <h1>CLEAN THE WATERS</h1>
+      <div id="game-buttons">
+        <button id="start" class="buttons">Start</button>
+        <button class="buttons">Reload</button>
+      </div>
+      <section id="game-section">
+        <canvas id="game-board" width="1080" height="620"></canvas>
+      </section>
+    </main>
     <script src="main.js"></script>
   </body>
 </html>
