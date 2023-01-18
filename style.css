@@ -1,0 +1,49 @@
+/* blue        rgb 
+   grey        rgb 
+   yellow      rgb
+
+
+
+
+*/
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  margin: 0px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  background-color: rgb(255, 255, 255);
+}
+
+h1 {
+  font-size: 52px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: aqua;
+  background-color: red;
+}
+
+#game-button-section {
+  display: flex;
+  gap: 32px;
+}
+
+.buttons {
+  padding: 8px;
+  width: 240px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-style: dotted;
+  border-radius: 45px;
+  color: blue;
+}
+
+#game-board {
+  background-color: rgb(87, 120, 239);
+  border-radius: 18px;
+}
