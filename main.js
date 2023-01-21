@@ -98,7 +98,7 @@ class Player {
     this.y
     this.width = 30
     this.height = 30
-    this.img = "./img/submarine-svgrepo-com.svg"
+    this.img = "/img/submarine-svgrepo-com.svg"
   }
 
   drawPlayer() {
