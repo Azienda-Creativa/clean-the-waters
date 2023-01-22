@@ -1,13 +1,16 @@
-class Enemy {
-  constructor() {
-    this.x = Math.random() * cr
-    this.y = 50
-    this.w = 100
-    this.h = 100
-    // if (color) this.color = color
+class Component {
+  constructor(x, y, w, h, color) {
+    this.x = x
+    this.y = y
+    this.w = w
+    this.h = h
+    this.color = "red"
+    this.img = new Image()
+    this.img.src = "./img/submarine-svgrepo-com.svg"
+    if (color) this.color = color
   }
 
-  /* render() {
+  render() {
     const ctx = gameBoard.context
 
     if (this.img) {
@@ -29,5 +32,5 @@ class Enemy {
     } else {
       return false
     }
-  } */
+  }
 }

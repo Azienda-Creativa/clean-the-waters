@@ -1,21 +1,89 @@
 // TO DO LIST
 
 // add functionality to start and play-again buttons
-// design a Simple and Fun UI
-// implement google fonts
-// able to drag the player by mouse with a slow-down effect - like swimming underwater
+// design a Simple and Fun UI - DONE
+// implement google fonts - DONE
+// able to drag the player by mouse with a slow-down effect - like swimming underwater - DONE BUT use class insted
 // able to collect and count points won and lost
 // add water sound
 // add score sound
 // increse handicap with time
 // game over screen
+// add sprites for player and obstacles
+
+/**   @type {HTMLCanvasElement} */
 
 const gameBoard = document.querySelector("#game-board")
 const ctx = gameBoard.getContext("2d")
 
+let start = document.querySelector("#start")
+// add an event listner for start button to run the function startGame()
+
+let reload = document.querySelector("#reload")
+// add an event listner for reload button to run reload()
+
+let currentPlayer = new Component(500, 340, 50, 50, "red")
 let currentGame
-let currentPlayer
-let score
+let currentScore = 0
+const fish = []
+const bottles = []
+class Bottles {
+  constructor() {
+    this.x = Math.random() * gameBoard.width
+    this.y = Math.random() * gameBoard.height
+    this.radius = 50
+    this.speed = Math.random() * 5 + 1
+    this.distance
+  }
+
+  update() {
+    this.y -= this.speed
+  }
+  draw() {
+    ctx.fillStyle = "red"
+    ctx.beginPath()
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+    ctx.closePath
+  }
+}
+
+/* let bottle1 = {
+  x: 50,
+  y: 50,
+  width: 50,
+  height: 40,
+}
+
+for (let i = 0; i < 500; i++) {
+  const element = bottles[i]
+  bottles.push(element)
+}
+
+function animatePlastic() {
+  ctx.clearRect(0, 0, gameBoard.width, gameBoard.height)
+  bottle1.x++
+  ctx.fillRect(bottle1.x, bottle1.y, bottle1.width, bottle1.height)
+  requestAnimationFrame(animatePlastic)
+}
+
+animatePlastic()
+ */
+//console.log(bottle1)
+
+// create new bottle img every 2sec.
+/* setInterval((plastic) => {
+  let newBottle = {
+    x: 50,
+    y: 50,
+    width: 50,
+    height: 40,
+    color: "red",
+  }
+  ctx.fillRect
+  bottles.push(bottle1)
+}, 2000)
+ */
+console.log(bottles)
 
 let canvasPos = getPosition(gameBoard)
 let mouseX = 0
@@ -34,24 +102,25 @@ function setMousePosition(e) {
 }
 
 function animate() {
-  dX = mouseX - xPos
-  dY = mouseY - yPos
+  dX = mouseX - currentPlayer.x
+  dY = mouseY - currentPlayer.y
 
-  xPos += dX / 500
-  yPos += dY / 500
+  currentPlayer.x += dX / 200
+  currentPlayer.y += dY / 200
 
   ctx.clearRect(0, 0, gameBoard.width, gameBoard.height)
 
   ctx.fillStyle = "#00CCFF"
-  ctx.fillRect(xPos - sqSize / 2, yPos - sqSize / 2, sqSize, sqSize)
+  ctx.fillRect(
+    currentPlayer.x - currentPlayer.w / 2,
+    currentPlayer.y - currentPlayer.w / 2,
+    currentPlayer.w,
+    currentPlayer.h
+  )
 
   requestAnimationFrame(animate)
 }
 animate()
-
-// deal with the page getting resized or scrolled
-window.addEventListener("scroll", updatePosition, false)
-window.addEventListener("resize", updatePosition, false)
 
 function updatePosition() {
   canvasPos = getPosition(gameBoard)
@@ -84,34 +153,17 @@ function getPosition(el) {
   }
 }
 
-class Game {
-  constructor() {
-    this.player = {}
-    this.obstacles = []
-    this.score = 0
-  }
-}
+/* class Player {
+  constructor() {}
 
-class Player {
-  constructor() {
-    this.x = 30
-    this.y
-    this.width = 30
-    this.height = 30
-    this.img = "/img/submarine-svgrepo-com.svg"
-  }
-
-  drawPlayer() {
-    ctx.fillStyle = "blue"
-    ctx.fillRect(this.x, this.y, this.width, this.height)
-  }
-
-  /*  let playerImg = new Image()
+  drawPlayer() {}
+ 
+    let playerImg = new Image()
     playerImg.src = this.img
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height) */
-}
+    ctx.drawImage(this.img, this.x, this.y, this.width, this.height) 
+}*/
 
-class Obstacle {
+/* class Obstacle {
   constructor(x, y, width, height) {
     this.x = x
     this.y = y
@@ -123,21 +175,17 @@ class Obstacle {
     ctx.fillStyle = "orange"
     ctx.fillRect(this.x, this.y, this.width, this.height)
   }
-}
+} */
 
 // event handler start button
-document.getElementById("start").onclick = () => {
+/* document.getElementById("start").onclick = () => {
   startGame()
 }
 
 function startGame() {
   currentGame = new Game()
-  currentPlayer = new Player()
-  currentGame.player = currentPlayer
-  currentGame.player.drawPlayer()
+} */
 
-  placeBackground()
-}
 // update canvas
 /* let obstaclesFrequency = 0
 function updateCanvas() {
