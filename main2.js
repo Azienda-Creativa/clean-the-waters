@@ -1,4 +1,4 @@
-/**   @type {HTMLCanvasElement} */
+/**  @type {HTMLCanvasElement} */
 
 // canvas set up
 const canvas = document.querySelector("#game-board")
@@ -17,7 +17,7 @@ let placeBackground = () => {
 let score = 0
 let gameFrame = 0
 let isGameOver = false
-ctx.font = "80px Arial"
+ctx.font = "40px Arial"
 
 // mouse interectivity
 let canvasPosition = canvas.getBoundingClientRect()
@@ -78,6 +78,7 @@ class Player {
     // add image here with drawImage()
   }
 }
+
 const player = new Player()
 
 // Plastic points
@@ -166,29 +167,28 @@ class Fish {
       this.speed = Math.random() * 2 + 2
     }
     // collision with player
-    const dx = this.x - player.x
-    const dy = this.y - player.y
-    const distance = Math.sqrt(dx * dx + dy * dy)
-    if (this.distance < this.radius + player.radius) {
+    let dx = this.x - player.x
+    let dy = this.y - player.y
+    let distance = Math.sqrt(dx * dx + dy * dy)
+    if (distance < this.radius + player.radius) {
       gameOver()
     }
   }
 }
 
 const fish = new Fish()
-
 let handleFish = () => {
-  fish.update()
   fish.draw()
+  fish.update()
 }
 
 let gameOver = () => {
-  if (score < 0) {
-    ctx.fillStyle = "red"
-    ctx.font = "300px Arial"
-    ctx.fillText(`YOU LOST = GAME OVER!`, canvas.width / 2, canvas.height / 2)
-    isGameOver = true
-  }
+  ctx.fillStyle = "blue"
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  ctx.fillStyle = "red"
+  ctx.fillText(`GAME OVER!`, canvas.width / 2, canvas.height / 2)
+
+  isGameOver = true
 }
 // animation loop
 
@@ -202,7 +202,6 @@ let animateGame = () => {
   ctx.fillStyle = "white"
   ctx.fillText(`${score}`, canvas.width / 2, canvas.height / 2) // score counter at the center of the canvas
   gameFrame++ // incred count frames by 1
-  gameOver()
   requestAnimationFrame(animateGame)
 }
 

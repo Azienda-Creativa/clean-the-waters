@@ -23,11 +23,11 @@ main {
 
   background-color: #489aff;
   opacity: 0.9;
-  background-image: radial-gradient(circle at center center, #a5a7d0, #489aff),
+  background-image: radial-gradient(circle at center center, #a5a7d0, #14355e),
     repeating-radial-gradient(
       circle at center center,
       #a5a7d0,
-      #a5a7d0,
+      #1a3033,
       10px,
       transparent 20px,
       transparent 10px
