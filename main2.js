@@ -10,13 +10,13 @@ canvas.height = 620
 const background = new Image()
 background.src = "./img/4161657.jpg"
 
-function placeBackground() {
+let placeBackground = () => {
   ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
 }
 
 let score = 0
 let gameFrame = 0
-let gameOver = false
+let isGameOver = false
 ctx.font = "80px Arial"
 
 // mouse interectivity
@@ -110,7 +110,7 @@ class Plastic {
     ctx.stroke()
   }
 }
-function handlePlastic() {
+let handlePlastic = () => {
   if (gameFrame % 100 == 0) plasticArray.push(new Plastic()) // create plastic every 100 frames
   for (let i = 0; i < plasticArray.length; i++) {
     plasticArray[i].update()
@@ -177,14 +177,22 @@ class Fish {
 
 const fish = new Fish()
 
-function handleFish() {
+let handleFish = () => {
   fish.update()
   fish.draw()
 }
 
+let gameOver = () => {
+  if (score < 0) {
+    ctx.fillStyle = "red"
+    ctx.font = "300px Arial"
+    ctx.fillText(`YOU LOST = GAME OVER!`, canvas.width / 2, canvas.height / 2)
+    isGameOver = true
+  }
+}
 // animation loop
 
-function animateGame() {
+let animateGame = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   placeBackground()
   handlePlastic()
@@ -194,6 +202,7 @@ function animateGame() {
   ctx.fillStyle = "white"
   ctx.fillText(`${score}`, canvas.width / 2, canvas.height / 2) // score counter at the center of the canvas
   gameFrame++ // incred count frames by 1
+  gameOver()
   requestAnimationFrame(animateGame)
 }
 
@@ -204,7 +213,8 @@ window.addEventListener("resize", function () {
 })
 
 const reloadButton = document.querySelector("#reload")
-const refreshPage = () => {
+
+let refreshPage = () => {
   location.reload()
 }
 reloadButton.addEventListener("click", refreshPage)
