@@ -196,8 +196,15 @@ function animateGame() {
   gameFrame++ // incred count frames by 1
   requestAnimationFrame(animateGame)
 }
+
 animateGame()
 
 window.addEventListener("resize", function () {
   canvasPosition = canvas.getBoundingClientRect()
 })
+
+const reloadButton = document.querySelector("#reload")
+const refreshPage = () => {
+  location.reload()
+}
+reloadButton.addEventListener("click", refreshPage)
