@@ -111,6 +111,7 @@ class Plastic {
     ctx.stroke()
   }
 }
+
 let handlePlastic = () => {
   if (gameFrame % 100 == 0) plasticArray.push(new Plastic()) // create plastic every 100 frames
   for (let i = 0; i < plasticArray.length; i++) {
@@ -120,6 +121,7 @@ let handlePlastic = () => {
       plasticArray.splice(i, 1)
       i--
     }
+
     // check collision measuring distance between center of the circles
     else if (
       plasticArray[i].distance <
@@ -167,9 +169,9 @@ class Fish {
       this.speed = Math.random() * 2 + 2
     }
     // collision with player
-    let dx = this.x - player.x
-    let dy = this.y - player.y
-    let distance = Math.sqrt(dx * dx + dy * dy)
+    const dx = this.x - player.x
+    const dy = this.y - player.y
+    const distance = Math.sqrt(dx * dx + dy * dy)
     if (distance < this.radius + player.radius) {
       gameOver()
     }
@@ -187,7 +189,6 @@ let gameOver = () => {
   ctx.fillRect(0, 0, canvas.width, canvas.height)
   ctx.fillStyle = "red"
   ctx.fillText(`GAME OVER!`, canvas.width / 2, canvas.height / 2)
-
   isGameOver = true
 }
 // animation loop
@@ -202,10 +203,12 @@ let animateGame = () => {
   ctx.fillStyle = "white"
   ctx.fillText(`${score}`, canvas.width / 2, canvas.height / 2) // score counter at the center of the canvas
   gameFrame++ // incred count frames by 1
-  requestAnimationFrame(animateGame)
+  if requestAnimationFrame(animateGame) 
 }
 
-animateGame()
+document.querySelector("#start").onclick = () => {
+  animateGame()
+}
 
 window.addEventListener("resize", function () {
   canvasPosition = canvas.getBoundingClientRect()
