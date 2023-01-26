@@ -37,11 +37,6 @@ canvas.addEventListener("mouseup", function () {
 
 // Player
 
-// const playerLeft = new Image()
-// playerLeft.src = "/img/submarine-left.png"
-// const playerRight = new Image()
-// playerRight.src = "/img/submarine-right.png"
-
 class Player {
   constructor() {
     this.x = canvas.width
@@ -74,8 +69,6 @@ class Player {
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
     ctx.fill()
     ctx.closePath()
-
-    // add image here with drawImage()
   }
 }
 
@@ -93,8 +86,6 @@ class Plastic {
     this.radius = 10
     this.speed = Math.random() * 3 + 1 // random speed
     this.distance
-    this.counted = false
-    this.sound = "sound1"
   }
   update() {
     this.y += this.speed
@@ -103,7 +94,7 @@ class Plastic {
     this.distance = Math.sqrt(dx * dx + dy * dy)
   }
   draw() {
-    ctx.fillStyle = "blue"
+    ctx.fillStyle = "black"
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
     ctx.fill()
@@ -111,7 +102,6 @@ class Plastic {
     ctx.stroke()
   }
 }
-
 let handlePlastic = () => {
   if (gameFrame % 100 == 0) plasticArray.push(new Plastic()) // create plastic every 100 frames
   for (let i = 0; i < plasticArray.length; i++) {
@@ -121,8 +111,7 @@ let handlePlastic = () => {
       plasticArray.splice(i, 1)
       i--
     }
-
-    // check collision measuring distance between center of the circles
+    // check collision mesuring distance between center of the circles
     else if (
       plasticArray[i].distance <
       plasticArray[i].radius + player.radius
@@ -142,10 +131,6 @@ let handlePlastic = () => {
 }
 // Fish Obstacles
 
-const imgFish = new Image()
-imgFish.src = "./img//submarine-left.png" // add image
-let fishArray = []
-
 class Fish {
   constructor() {
     this.x = canvas.width + 200
@@ -154,7 +139,7 @@ class Fish {
     this.speed = Math.random() * 2 + 2
   }
   draw() {
-    ctx.fillStyle = "purple"
+    ctx.fillStyle = "red"
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
     ctx.fill()
@@ -177,7 +162,6 @@ class Fish {
     }
   }
 }
-
 const fish = new Fish()
 let handleFish = () => {
   fish.draw()
@@ -187,8 +171,8 @@ let handleFish = () => {
 let gameOver = () => {
   ctx.fillStyle = "blue"
   ctx.fillRect(0, 0, canvas.width, canvas.height)
-  ctx.fillStyle = "red"
-  ctx.fillText(`GAME OVER!`, canvas.width / 2, canvas.height / 2)
+  ctx.fillStyle = "white"
+  ctx.fillText(`GAME OVER!`, canvas.width / 2 - 112, canvas.height / 2)
   isGameOver = true
 }
 // animation loop
@@ -200,10 +184,10 @@ let animateGame = () => {
   player.update()
   player.draw()
   handleFish()
-  ctx.fillStyle = "white"
-  ctx.fillText(`${score}`, canvas.width / 2, canvas.height / 2) // score counter at the center of the canvas
-  gameFrame++ // incred count frames by 1
-  if requestAnimationFrame(animateGame) 
+  gameFrame++ // incresing count frames by 1
+  if (!isGameOver) {
+    requestAnimationFrame(animateGame)
+  }
 }
 
 document.querySelector("#start").onclick = () => {
@@ -218,5 +202,6 @@ const reloadButton = document.querySelector("#reload")
 
 let refreshPage = () => {
   location.reload()
+  animateGame()
 }
 reloadButton.addEventListener("click", refreshPage)
