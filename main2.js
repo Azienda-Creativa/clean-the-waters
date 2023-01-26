@@ -202,6 +202,5 @@ const reloadButton = document.querySelector("#reload")
 
 let refreshPage = () => {
   location.reload()
-  animateGame()
 }
 reloadButton.addEventListener("click", refreshPage)

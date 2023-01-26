@@ -1,3 +1,5 @@
+![](img/head-img.png)
+
 # Clean-the-waters
 
 This is my first IronHack Project ! A fun and kid-firendly video game inspired by my passion for nature and obsession on plastic waste !
@@ -15,10 +17,10 @@ You lose when hitting -1 points !
 
 # MVP
 
-- start and play-again buttons
+- start and play-again button
 - Simple and Fun UI
 - implement google fonts
-- able to drag the player
+- able to drag the player with an under-water effect
 - able to collect and count points
 - add water sound
 - add score sound
@@ -33,6 +35,10 @@ You lose when hitting -1 points !
 - create levels and powerup
 
 # Data Structure
+
+main2.js
+index.html
+style.css
 
 # States
 
