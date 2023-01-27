@@ -73,7 +73,7 @@ It gets harder every minute.
 
 # Links
 
-Concept presentation and wireframes
-Demo presentation
-GitHub repository link
-Deployment Link - live website [https://github.com/Azienda-Creativa/clean-the-waters]
+- Concept presentation and wireframes - [https://github.com/Azienda-Creativa/clean-the-waters/blob/main/Intro%20Presentation%20and%20Wireframes/Intro%20%26%20Wireframes.pdf]
+- Demo presentation - []
+- GitHub repository link - [https://github.com/Azienda-Creativa/clean-the-waters]
+- Deployment Link / live website [https://github.com/Azienda-Creativa/clean-the-waters]

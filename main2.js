@@ -163,6 +163,7 @@ class Fish {
   }
 }
 const fish = new Fish()
+let fishArray = []
 let handleFish = () => {
   fish.draw()
   fish.update()
