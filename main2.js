@@ -182,9 +182,14 @@ let animateGame = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   placeBackground()
   handlePlastic()
+
   player.update()
   player.draw()
   handleFish()
+  if (!isGameOver) {
+    ctx.fillStyle = "white"
+    ctx.fillText(`${score}`, canvas.width / 2, canvas.height / 2) // score counter at the center of the canvas
+  }
   gameFrame++ // incresing count frames by 1
   if (!isGameOver) {
     requestAnimationFrame(animateGame)
